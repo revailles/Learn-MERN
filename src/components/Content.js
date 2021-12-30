@@ -1,4 +1,5 @@
 import react from 'react'
+import Part from './Part'
 
 const Content = () => {
     const part1 = 'Fundamentals of React'
@@ -9,15 +10,9 @@ const Content = () => {
     const exercises3 = 14
     return (
         <>
-            <p>
-                {part1} {exercises1}
-            </p>
-            <p>
-                {part2} {exercises2}
-            </p>
-            <p>
-                {part3} {exercises3}
-            </p>
+            <Part part={part1} exercise={exercises1} />
+            <Part part={part2} exercise={exercises2} />
+            <Part part={part3} exercise={exercises3} />
         </>
     )
 }
