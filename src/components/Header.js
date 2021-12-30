@@ -1,11 +1,10 @@
 import react from 'react'
 
-const Header = () => {
-    const course = 'Half Stack application development'
+const Header = (props) => {
     return (
         <>
             <div>
-                <p>{course}</p>
+                <p>{props.course}</p>
             </div>
         </>
     )
