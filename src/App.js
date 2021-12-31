@@ -1,31 +1,34 @@
-import React from 'react'
-import Content from './components/Content'
+import React, {useState} from 'react'
+import Body from './components/Body'
+import Button from './components/Button'
 import Header from './components/Header'
-import Total from './components/Total'
+
 
 const App = () => {
-  const course = {
-    name: 'Half Stack application development',
-    parts: [
-      {
-        name: 'Fundamentals of React',
-        exercises: 10
-      },
-      {
-        name: 'Using props to pass data',
-        exercises: 7
-      },
-      {
-        name: 'State of a component',
-        exercises: 14
-      }
-    ]
+  const [good, setGood] = useState(0)
+  const [neutral, setNeutral] = useState(0)
+  const [bad, setBad] = useState(0)
+
+  const handleGoodClick = () => {
+    setGood(good + 1)
   }
+  const handleNeutralClick = () => {
+    setNeutral(neutral + 1)
+  }
+  const handleBadClick = () => {
+    setBad(bad + 1)
+  }
+
   return (
     <div>
-      <Header course={course} />
-      <Content course={course.parts} />
-      <Total course={course.parts} />
+      <Header />
+      <Button handleOnClick={handleGoodClick} text="good" />
+      <Button handleOnClick={handleNeutralClick} text="neutral" />
+      <Button handleOnClick={handleBadClick} text="bad" />
+      <Body header="Statistic" />
+      <Body value={good} text="good" />
+      <Body value={neutral} text="neutral" />
+      <Body value={bad} text="bad" />
     </div>
   )
 }
