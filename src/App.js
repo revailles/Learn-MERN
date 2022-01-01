@@ -1,35 +1,37 @@
-import React, {useState} from 'react'
-import Body from './components/Body'
-import Button from './components/Button'
-import Header from './components/Header'
-
+import React from 'react'
+import Course from './components/Course'
 
 const App = () => {
-  const [good, setGood] = useState(0)
-  const [neutral, setNeutral] = useState(0)
-  const [bad, setBad] = useState(0)
+  const course = {
+    id: 1,
+    name: 'Half Stack application development',
+    parts: [
+      {
+        name: 'Fundamentals of React',
+        exercises: 10,
+        id: 1
+      },
+      {
+        name: 'Using props to pass data',
+        exercises: 7,
+        id: 2
+      },
+      {
+        name: 'State of a component',
+        exercises: 14,
+        id: 3
+      }
+    ]
+  }
 
-  const handleGoodClick = () => {
-    setGood(good + 1)
-  }
-  const handleNeutralClick = () => {
-    setNeutral(neutral + 1)
-  }
-  const handleBadClick = () => {
-    setBad(bad + 1)
-  }
+  const totalExercises = course.parts.map((part) => part.exercises).reduce((prev, cur) => { return prev + cur})
+
+  console.log(totalExercises);
 
   return (
-    <div>
-      <Header />
-      <Button handleOnClick={handleGoodClick} text="good" />
-      <Button handleOnClick={handleNeutralClick} text="neutral" />
-      <Button handleOnClick={handleBadClick} text="bad" />
-      <Body header="Statistic" />
-      <Body value={good} text="good" />
-      <Body value={neutral} text="neutral" />
-      <Body value={bad} text="bad" />
-    </div>
+    <>
+          <Course course={course} total={totalExercises} />
+    </>
   )
 }
 
